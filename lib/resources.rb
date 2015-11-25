@@ -1,5 +1,4 @@
 require 'pp'
-require 'yajl/json_gem'
 require 'stringio'
 require 'cgi'
 require 'securerandom'
@@ -35,11 +34,12 @@ module GitHub
       end
 
       def strftime(time, format = DefaultTimeFormat)
+        return "" if time.nil?
         attribute_to_time(time).strftime(format)
       end
 
       def avatar_for(login)
-        %(<img height="16" width="16" src="%s" alt="Avatar for #{login}"/>) % avatar_url_for(login)
+        %(<img height="16" width="16" src="%s" alt="Avatar for #{login}" data-proofer-ignore/>) % avatar_url_for(login)
       end
 
       def avatar_url_for(login)
@@ -121,7 +121,7 @@ module GitHub
       end
 
       CONTENT ||= {
-        'LATEST_ENTERPRISE_VERSION' => '2.3',
+        'LATEST_ENTERPRISE_VERSION' => '2.4',
         'IF_SITE_ADMIN' => "If you are an [authenticated](/v3/#authentication) site administrator for your Enterprise instance,",
         "PUT_CONTENT_LENGTH" => "Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see \"[HTTP verbs](/v3/#http-verbs).\"",
         "OPTIONAL_PUT_CONTENT_LENGTH" => "Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see \"[HTTP verbs](/v3/#http-verbs).\"",
@@ -357,11 +357,25 @@ This endpoint may also return pull requests in the response. If an issue *is* a 
         "commit" => {
           "sha" => "6dcb09b5b57875f334f61aebed695e2e4193db5e",
           "url" => "https://api.github.com/repos/octocat/Hello-World/commits/c5b97d5ae6c19d5c5df71a34c7fbeeda2479ccbc"
+        },
+        "protection" => {
+          "enabled" => false,
+          "required_status_checks" => {
+            "enforcement_level" => "off",
+            "contexts" => []
+          }
         }
       }
     ]
 
     BRANCH ||= {"name"=>"master",
+      "protection" => {
+        "enabled" => false,
+        "required_status_checks" => {
+          "enforcement_level" => "off",
+          "contexts" => []
+        }
+      },
  "commit"=>
   {"sha"=>"7fd1a60b01f91b314f59955a4e4d4e80d8edf11d",
    "commit"=>
@@ -926,6 +940,7 @@ This endpoint may also return pull requests in the response. If an issue *is* a 
       "guid" => "0b989ba4-242f-11e5-81e1-c7b6966d2516",
       "state" => "pending",
       "lock_repositories" => true,
+      "exclude_attachments" => false,
       "url" => "https://api.github.com/orgs/octo-org/migrations/79",
       "created_at" => "2015-07-06T15:33:38-07:00",
       "updated_at" => "2015-07-06T15:33:38-07:00",
