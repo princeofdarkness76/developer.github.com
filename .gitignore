@@ -9,7 +9,10 @@
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> github/master
 =======
 >>>>>>> github/master
 # bower brings in *a lot* of files
@@ -18,7 +21,10 @@
 !/assets/vendor/lunr.js/lunr.min.js
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> github/gh-pages
+=======
+>>>>>>> github/master
 =======
 >>>>>>> github/master
 output
@@ -28,10 +34,14 @@ tmp
 crash.log
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 static/search-index.json
 =======
 npm-debug.log
 >>>>>>> github/gh-pages
+=======
+npm-debug.log
+>>>>>>> github/master
 =======
 npm-debug.log
 >>>>>>> github/master
