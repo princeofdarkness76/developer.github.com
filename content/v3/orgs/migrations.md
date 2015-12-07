@@ -1,10 +1,9 @@
 ---
-title: Migrations | GitHub API
+title: Migrations
 ---
 
 # Migrations
 
-* TOC
 {:toc}
 
 {{#enterprise-only}}

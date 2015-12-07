@@ -1,10 +1,9 @@
 ---
-title: Authorizations | GitHub API
+title: Authorizations
 ---
 
 # OAuth Authorizations API
 
-* TOC
 {:toc}
 
 You can use this API to manage your OAuth applications. You can only access this API via [Basic Authentication](/v3/auth#basic-authentication) using your username and password, not tokens.

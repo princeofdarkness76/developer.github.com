@@ -1,10 +1,9 @@
 ---
-title: User Public Keys | GitHub API
+title: User Public Keys
 ---
 
 # Public Keys
 
-* TOC
 {:toc}
 
 ## List public keys for a user

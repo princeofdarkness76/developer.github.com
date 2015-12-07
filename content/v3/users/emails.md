@@ -1,10 +1,9 @@
 ---
-title: User Emails | GitHub API
+title: User Emails
 ---
 
 # Emails
 
-* TOC
 {:toc}
 
 Management of email addresses via the API requires that you are

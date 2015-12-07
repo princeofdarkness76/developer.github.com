@@ -1,10 +1,9 @@
 ---
-title: Organization Webhooks | GitHub API
+title: Organization Webhooks
 ---
 
 # Webhooks
 
-* TOC
 {:toc}
 
 Organization webhooks allow you to receive HTTP `POST` payloads whenever certain events happen within the organization. Subscribing to these events makes it possible to build integrations that react to actions on GitHub.com. For more information on actions you can subscribe to, check out our [Events documentation][webhook-events].

@@ -1,10 +1,9 @@
 ---
-title: Enterprise | GitHub API
+title: Enterprise
 ---
 
-# Enterprise <%= fetch_content(:latest_enterprise_version) %>
+# Enterprise <%= config[:versions][0] %>
 
-* TOC
 {:toc}
 
 [GitHub Enterprise](https://enterprise.github.com/) supports the same powerful API available on GitHub.com as well as its own set of API endpoints. You can find a list of these endpoints on the sidebar, with the exception of the [User Administration][] API, which is within its own section.
@@ -13,15 +12,15 @@ title: Enterprise | GitHub API
 
 All API endpoints—except [Management Console][] API endpoints—are prefixed with the following URL:
 
-<pre class="terminal">
+``` command-line
 http(s)://<em>hostname</em>/api/v3/
-</pre>
+```
 
 [Management Console][] API endpoints are only prefixed with a hostname:
 
-<pre class="terminal">
+``` command-line
 http(s)://<em>hostname</em>/
-</pre>
+```
 
 ## Authentication
 
@@ -38,7 +37,7 @@ Every Enterprise API endpoint is only accessible to GitHub Enterprise site admin
 
 ## Past Releases
 
-The latest release for GitHub Enterprise is <%= fetch_content(:latest_enterprise_version) %>. The GitHub APIs available to this release are located at <https://developer.github.com/enterprise/<%= fetch_content(:latest_enterprise_version) %>/>.
+The latest release for GitHub Enterprise is <%= config[:versions][0] %>. The GitHub APIs available to this release are located at <https://developer.github.com/enterprise/<%= config[:versions][0] %>/>.
 
 Documentation for the API that's bundled with your GitHub Enterprise appliance is available for past releases:
 
