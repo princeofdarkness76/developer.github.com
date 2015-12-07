@@ -10,7 +10,10 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> github/master
 =======
 >>>>>>> github/master
 =======
@@ -22,7 +25,10 @@
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> github/gh-pages
+=======
+>>>>>>> github/master
 =======
 >>>>>>> github/master
 =======
@@ -35,10 +41,14 @@ crash.log
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 static/search-index.json
 =======
 npm-debug.log
 >>>>>>> github/gh-pages
+=======
+npm-debug.log
+>>>>>>> github/master
 =======
 npm-debug.log
 >>>>>>> github/master
