@@ -5,19 +5,19 @@
   <meta http-equiv="Content-Language" content="en-us" />
   <meta http-equiv="imagetoolbar" content="false" />
   <meta name="MSSmartTagsPreventParsing" content="true" />
-  <title>Notifications API</title>
+  <title>Notifications API | GitHub Developer Guide</title>
   <link rel="alternate" type="application/atom+xml" title="API Changes" href="/changes.atom" />
-  <link href="/css/reset.css" rel="stylesheet" type="text/css" />
-  <link href="/css/documentation.css" media="screen" rel="stylesheet" type="text/css">
-  <link href="/css/pygments.css" media="screen" rel="stylesheet" type="text/css">
-  <script src="/js/jquery.js" type="text/javascript"></script>
-  <script src="/js/documentation.js" type="text/javascript"></script>
+  <link href="/assets/stylesheets/application.css" rel="stylesheet" type="text/css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="/assets/javascripts/application.js" type="text/javascript"></script>
   
 </head>
 
 
 <body class="blog">
-  <div id="header-wrapper">
+  
+
+<div id="header-wrapper">
   <div id="header">
     <div>
       <a class="logo" href="/">GitHub:Developer</a>
@@ -54,73 +54,78 @@
     
   </li>
   <li class="who_when">
-    <img height="16" width="16" src="https://github.com/technoweenie.png" alt="Avatar for technoweenie"/>
-      <a href="https://github.com/technoweenie">technoweenie</a>
+    <img height="16" width="16" src="https://github.com/technoweenie.png" alt="Avatar for technoweenie" data-proofer-ignore/>
+      <a href="https://github.com/technoweenie" data-proofer-ignore>technoweenie</a>
   </li>
 </ul>
 </div>
 
 
+
+
 <p>Now that the dust has settled around <a href="https://github.com/blog/1204-notifications-stars">Notifications and Stars</a>,
-we’ve unleashed all that :sparkles: in a <a href="http://developer.github.com/v3/activity/notifications/">brand new API</a>.  You can now
+we've unleashed all that <img class="emoji" title=":sparkles:" alt=":sparkles:" src="https://a248.e.akamai.net/assets.github.com/images/icons/emoji/unicode/2728.png" height="20" width="20" align="absmiddle"> in a <a href="http://developer.github.com/v3/activity/notifications/">brand new API</a>.  You can now
 view and mark notifications as read.</p>
 
-<h2 id="endpoint">Endpoint</h2>
+<h2>
+<a id="endpoint" class="anchor" href="#endpoint" aria-hidden="true"><span class="octicon octicon-link"></span></a>Endpoint</h2>
 
 <p>The core notifications functionality is under the <code>/notifications</code> endpoint.
 You can look for unread notifications:</p>
 
-<pre class="terminal">
-$ curl https://api.github.com/notifications
+<pre class="command-line">
+<span class="command">curl https://api.github.com/notifications</span>
 </pre>
 
 <p>You can filter these notifications to a single Repository:</p>
 
-<pre class="terminal">
-$ curl https://api.github.com/repos/technoweenie/faraday/notifications
+<pre class="command-line">
+<span class="command">curl https://api.github.com/repos/technoweenie/faraday/notifications</span>
 </pre>
 
 <p>You can mark them as read:</p>
 
-<pre class="terminal">
-# all notifications
-$ curl https://api.github.com/notifications \
-    -X PUT -d '{"read": true}'
+<pre class="command-line">
+<span class="comment"># all notifications</span>
+<span class="command">curl https://api.github.com/notifications \</span>
+<span class="command">   -X PUT -d '{"read": true}'</span>
 
-# notifications for a single repository
-$ curl https://api.github.com/repos/technoweenie/faraday/notifications \
-    -X PUT -d '{"read": true}'
+<span class="comment"># notifications for a single repository</span>
+<span class="command">curl https://api.github.com/repos/technoweenie/faraday/notifications \</span>
+<span class="command">   -X PUT -d '{"read": true}'</span>
 </pre>
 
 <p>You can also modify subscriptions for a Repository or a single thread.</p>
 
-<pre class="terminal">
-# subscription details for the thread (either an Issue or Commit)
-$ curl https://api.github.com/notifications/threads/1/subscription
+<pre class="command-line">
+<span class="comment"># subscription details for the thread (either an Issue or Commit)</span>
+<span class="command">curl https://api.github.com/notifications/threads/1/subscription</span>
 
-# subscription details for a whole Repository.
-$ curl https://api.github.com/repos/technoweenie/faraday/subscription
+<span class="comment"># subscription details for a whole Repository.</span>
+<span class="command">curl https://api.github.com/repos/technoweenie/faraday/subscription</span>
 </pre>
 
-<h2 id="polling">Polling</h2>
+<h2>
+<a id="polling" class="anchor" href="#polling" aria-hidden="true"><span class="octicon octicon-link"></span></a>Polling</h2>
 
 <p>The Notifications API is optimized for polling by the last modified time:</p>
 
-<pre class="terminal">
-# Add authentication to your requests
-$ curl -I https://api.github.com/notifications
-HTTP/1.1 200 OK
-Last-Modified: Thu, 25 Oct 2012 15:16:27 GMT
-X-Poll-Interval: 60
+<pre class="command-line">
+<span class="comment"># Add authentication to your requests</span>
+<span class="command">curl -I https://api.github.com/notifications</span>
+<span class="output">HTTP/1.1 200 OK</span>
+<span class="output">Last-Modified: Thu, 25 Oct 2012 15:16:27 GMT</span>
+<span class="output">X-Poll-Interval: 60</span>
 
-# Pass the Last-Modified header exactly
-$ curl -I https://api.github.com/notifications
-    -H "If-Modified-Since: Thu, 25 Oct 2012 15:16:27 GMT"
-HTTP/1.1 304 Not Modified
-X-Poll-Interval: 60
+<span class="comment"># Pass the Last-Modified header exactly</span>
+<span class="command">curl -I https://api.github.com/notifications</span>
+<span class="command">   -H "If-Modified-Since: Thu, 25 Oct 2012 15:16:27 GMT"</span>
+<span class="output">HTTP/1.1 304 Not Modified</span>
+<span class="output">X-Poll-Interval: 60</span>
 </pre>
 
 <p>You can read about the API details in depth in the <a href="http://developer.github.com/v3/activity/notifications/">Notifications documentation</a>.</p>
+
 
 </div>
 
@@ -129,6 +134,10 @@ X-Poll-Interval: 60
     <div class="sidebar-shell">
         <h2>Recent Posts</h2>
 <ul class="headlines sidebar-module">
+
+  <li><a href="/changes/2015-11-11-protected-branches-api/">Protected Branches API Preview Period<br /><span class="date">November 11, 2015</span></a></li>
+
+  <li><a href="/changes/2015-09-03-ensure-your-app-is-ready-for-protected-branches/">Ensure your app is ready for Protected Branches<br /><span class="date">September 3, 2015</span></a></li>
 
   <li><a href="/changes/2015-08-04-get-license-contents/">Get the contents of a repository’s license<br /><span class="date">August 4, 2015</span></a></li>
 
@@ -141,10 +150,6 @@ X-Poll-Interval: 60
   <li><a href="/changes/2015-06-24-api-enhancements-for-working-with-organization-permissions/">API enhancements for working with organization permissions<br /><span class="date">June 24, 2015</span></a></li>
 
   <li><a href="/changes/2015-06-24-licenses-api-update/">Licenses API update<br /><span class="date">June 24, 2015</span></a></li>
-
-  <li><a href="/changes/2015-06-17-organizations-endpoint/">List all organizations<br /><span class="date">June 17, 2015</span></a></li>
-
-  <li><a href="/changes/2015-06-11-pages-a-records/">GitHub Pages' A Records Added to Meta API<br /><span class="date">June 11, 2015</span></a></li>
 
 </ul>
 
@@ -176,23 +181,10 @@ X-Poll-Interval: 60
     </div>
 
     <div class="wrapper">
-      <p>Design &copy; <span class="js-year"></span> Copyright <span class="js-year"></span> GitHub, Inc. </p>
+      <p>Design &copy; 2015 Copyright 2015 GitHub, Inc. </p>
     </div>
 
   </div><!-- /#footer -->
-  <script type="text/javascript">
-    var _gauges = _gauges || [];
-    (function() {
-      var t   = document.createElement('script');
-      t.type  = 'text/javascript';
-      t.async = true;
-      t.id    = 'gauges-tracker';
-      t.setAttribute('data-site-id', '4f2038e0cb25bc1b55000003');
-      t.src = '//secure.gaug.es/track.js';
-      var s = document.getElementsByTagName('script')[0];
-      s.parentNode.insertBefore(t, s);
-    })();
-  </script>
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -202,7 +194,6 @@ X-Poll-Interval: 60
     ga('create', 'UA-3769691-37', 'github.com');
     ga('send', 'pageview');
   </script>
-  <script src="/js/retina.js" type="text/javascript"></script>
 
 </body>
 </html>
