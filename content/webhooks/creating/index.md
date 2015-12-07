@@ -1,11 +1,10 @@
 ---
-title: Creating webhooks | GitHub API
+title: Creating webhooks
 layout: webhooks
 ---
 
 # Creating Webhooks
 
-* TOC
 {:toc}
 
 Now that we understand [the basics of webhooks][webhooks-overview], let's go

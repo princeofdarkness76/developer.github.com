@@ -1,10 +1,9 @@
 ---
-title: Issue Events | GitHub API
+title: Issue Events
 ---
 
 # Events
 
-* TOC
 {:toc}
 
 Records various events that occur around an Issue or Pull Request. This is

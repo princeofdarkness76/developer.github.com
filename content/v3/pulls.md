@@ -1,10 +1,9 @@
 ---
-title: Pull Requests | GitHub API
+title: Pull Requests
 ---
 
 # Pull Requests
 
-* TOC
 {:toc}
 
 The Pull Request API allows you to list, view, edit, create, and even merge

@@ -8,20 +8,30 @@
 /node_modules/
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> github/master
 # bower brings in *a lot* of files
 /assets/vendor/lunr.js/*
 !/assets/vendor/lunr.js/lunr.js
 !/assets/vendor/lunr.js/lunr.min.js
 
+<<<<<<< HEAD
 >>>>>>> github/gh-pages
+=======
+>>>>>>> github/master
 output
 tmp
 .DS_Store
 .bundle
 crash.log
 <<<<<<< HEAD
+<<<<<<< HEAD
 static/search-index.json
 =======
 npm-debug.log
 >>>>>>> github/gh-pages
+=======
+npm-debug.log
+>>>>>>> github/master
